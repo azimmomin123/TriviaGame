@@ -4,6 +4,13 @@ var number = 6;
 //Variable that will hold the setInterval when we
 //execute the run function
 var counter;
+$("#start").click(displayQuestion);
+
+function displayQuestion(){
+	run();
+}
+
+
 
 function run (){
 	counter = setInterval(decrement, 1000);
@@ -23,9 +30,7 @@ function decrement(){
 function stop(){
 	clearInterval(counter);
 	//Empty the "questions" div.
-    $(".questions").html("");
-    //Empty the "Timer" div.
-    $(".timer").html("");
+    $(".body").hide();
     correctAnswers();
 }
 
@@ -34,5 +39,3 @@ function correctAnswers(){
     $(".questions").html("All Done!");
 
 }
-
-run();
