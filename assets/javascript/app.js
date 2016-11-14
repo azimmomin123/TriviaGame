@@ -11,7 +11,9 @@ var questions = [{
                 "Atlanta Falcons",
                 "Houston Rockets",
                 ],
-                rightAnswer: 1
+                rightAnswer: 1,
+                rightGif:'http://gph.is/2fBm2VW',
+                wrongGif:'http://gph.is/1u24Kkf',
             	},{
 	            question : 'What is the name of the ship that crashed into an iceberg?',
 	            answers: [
@@ -27,10 +29,12 @@ $("#start").click(displayQuestion);
 // Displays the question and runs the timer after the start button is clicked. 
 function displayQuestion(){
 	run();
+	$(".questions").html("")
 	$(".displayQuestion").html(questions[questionNumber].question);
 	// Displays each answer Choice
 	for(var i = 0; i < 4; i++){
 		var q = $("<button>");
+		q.addClass("choice");
 		// Gives each button a true of false depending on if its the correct answer.
 		if (questions[questionNumber].rightAnswer === i){
 			q.attr("value", true);
@@ -40,8 +44,26 @@ function displayQuestion(){
 
 		q.text(questions[questionNumber].answers[i]);
 	 	$(".questions").append(q);
+
+	 	//if ($(.q.attr("value")) == true)
 	}
-	
+
+	//Givine the class "choice" a onclick function
+	$(".choice").on("click", function(){
+		var x = $(this).attr("value");
+
+		if (x === "true"){
+			console.log("right");
+			showRightAnswer();
+		}else if (x === "false"){
+			console.log("wrong");
+			showWrongAnswer();
+		}
+	});	
+}
+
+function showRightAnswer(){
+	$(".content").html("")
 }
 
 // Starts the Timer
@@ -54,22 +76,19 @@ function decrement(){
 
 	$("#timer").html("<h2>Time Remaining: " + number + "</h2>");
 
+	//If timer runs out then switch to the next question
 	if (number === 0){
-		console.log("Time is Up! Next time do it faster! SLOW POKE!");
 		stop();
+		questionNumber++;
+		number = 6;
+		displayQuestion();
 	}
 }
 
-// Prevents teh timer from going past 0.
+// Prevents thh timer from going past 0.
 function stop(){
 	clearInterval(counter);
 	//Empty the "questions" div.
     //$(".body").hide();
     //correctAnswers();
 }
-
-// function correctAnswers(){
-// 	//Empty the "laps" div.
-//     $(".questions").html("All Done!");
-
-// }
