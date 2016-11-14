@@ -12,8 +12,8 @@ var questions = [{
                 "Houston Rockets",
                 ],
                 rightAnswer: 1,
-                rightGif:'http://gph.is/2fBm2VW',
-                wrongGif:'http://gph.is/1u24Kkf',
+                rightGif:'http://i.giphy.com/l0HlRP71GpG8FOcMM.gif',
+                wrongGif:'http://i.giphy.com/iWREPosOrwzFm.gif',
             	},{
 	            question : 'What is the name of the ship that crashed into an iceberg?',
 	            answers: [
@@ -54,16 +54,34 @@ function displayQuestion(){
 
 		if (x === "true"){
 			console.log("right");
-			showRightAnswer();
+			rightAnswer();
 		}else if (x === "false"){
 			console.log("wrong");
-			showWrongAnswer();
+			wrongAnswer();
 		}
 	});	
 }
 
-function showRightAnswer(){
+function wrongAnswer(){
+	//Removes the question and choices from page
 	$(".content").html("")
+	//X is the array index for the right answer
+	var x = questions[questionNumber].rightAnswer;
+	//This will output the correct anwer and gif
+	$(".content").append("Sorry!!!! The correct answer is " + questions[questionNumber].answers[x] + "<br>");
+	var imageGif = $("<img>").attr("src", questions[questionNumber].wrongGif);
+	$(".content").append(imageGif);
+}
+
+function rightAnswer(){
+	//Removes the question and choices from page
+	$(".content").html("")
+	//X is the array index for the right answer
+	var x = questions[questionNumber].rightAnswer;
+	//This will output the correct anwer and gif
+	$(".content").append("Correct!!! <br>");
+	var imageGif = $("<img>").attr("src", questions[questionNumber].rightGif);
+	$(".content").append(imageGif);
 }
 
 // Starts the Timer
