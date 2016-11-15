@@ -1,5 +1,5 @@
 // Define number of seconds to answer questions
-var number = 6;
+var number = 3;
 var questionNumber = 0;
 
 // Question, Choices, Answers Array
@@ -14,6 +14,7 @@ var questions = [{
                 rightAnswer: 1,
                 rightGif:'http://i.giphy.com/l0HlRP71GpG8FOcMM.gif',
                 wrongGif:'http://i.giphy.com/iWREPosOrwzFm.gif',
+                time: 'http://i.giphy.com/l4hLT6kXPi9js7xFC.gif',
             	},{
 	            question : 'What is the name of the ship that crashed into an iceberg?',
 	            answers: [
@@ -24,12 +25,17 @@ var questions = [{
 
 //Variable that will hold the setInterval when we execute the run function
 var counter;
+//Clicking start will display the question and hide the button
 $("#start").click(displayQuestion);
+$("#start").click(function(){
+        $(this).hide();
+    });
 
 // Displays the question and runs the timer after the start button is clicked. 
 function displayQuestion(){
 	run();
 	$(".questions").html("")
+	console.log(questionNumber);
 	$(".displayQuestion").html(questions[questionNumber].question);
 	// Displays each answer Choice
 	for(var i = 0; i < 4; i++){
@@ -63,6 +69,7 @@ function displayQuestion(){
 }
 
 function wrongAnswer(){
+	stop();
 	//Removes the question and choices from page
 	$(".content").html("")
 	//X is the array index for the right answer
@@ -71,9 +78,12 @@ function wrongAnswer(){
 	$(".content").append("Sorry!!!! The correct answer is " + questions[questionNumber].answers[x] + "<br>");
 	var imageGif = $("<img>").attr("src", questions[questionNumber].wrongGif);
 	$(".content").append(imageGif);
+	//After selecting an answer we set it to the next question number
+	questionNumber++;
 }
 
 function rightAnswer(){
+	stop();
 	//Removes the question and choices from page
 	$(".content").html("")
 	//X is the array index for the right answer
@@ -82,6 +92,27 @@ function rightAnswer(){
 	$(".content").append("Correct!!! <br>");
 	var imageGif = $("<img>").attr("src", questions[questionNumber].rightGif);
 	$(".content").append(imageGif);
+	//After selecting an answer we set it to the next question number
+	questionNumber++;
+}
+
+function outOfTime(){
+	stop();
+	//Removes the question and choices from page
+	$(".content").html("")
+	//X is the array index for the right answer
+	var x = questions[questionNumber].rightAnswer;
+	//This will output the correct anwer and gif
+	$(".content").append("TOO SLOW, SLOW POKE!!!! The correct answer is " + questions[questionNumber].answers[x] + "<br>");
+	var imageGif = $("<img>").attr("src", questions[questionNumber].time);
+	$(".content").append(imageGif);
+	//After selecting an answer we set it to the next question number
+	
+}
+
+//Timer for next question
+function next(){
+	displayQuestion();
 }
 
 // Starts the Timer
@@ -96,10 +127,10 @@ function decrement(){
 
 	//If timer runs out then switch to the next question
 	if (number === 0){
-		stop();
+		outOfTime();
 		questionNumber++;
-		number = 6;
-		displayQuestion();
+		number = 3;	
+		
 	}
 }
 
