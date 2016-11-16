@@ -1,5 +1,5 @@
 // Define number of seconds to answer questions
-var number = 3;
+var number = 6;
 var questionNumber = 0;
 
 // Question, Choices, Answers Array
@@ -80,6 +80,7 @@ function wrongAnswer(){
 	$(".content").append(imageGif);
 	//After selecting an answer we set it to the next question number
 	questionNumber++;
+	setTimeout(next,3000); //not working here
 }
 
 function rightAnswer(){
@@ -94,6 +95,7 @@ function rightAnswer(){
 	$(".content").append(imageGif);
 	//After selecting an answer we set it to the next question number
 	questionNumber++;
+	setTimeout(next,3000); //not working here
 }
 
 function outOfTime(){
@@ -107,6 +109,8 @@ function outOfTime(){
 	var imageGif = $("<img>").attr("src", questions[questionNumber].time);
 	$(".content").append(imageGif);
 	//After selecting an answer we set it to the next question number
+	questionNumber++;
+	setTimeout(next,3000); //not working here
 	
 }
 
@@ -129,7 +133,7 @@ function decrement(){
 	if (number === 0){
 		outOfTime();
 		questionNumber++;
-		number = 3;	
+		number = 6;	
 		
 	}
 }
