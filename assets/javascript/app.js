@@ -5,6 +5,7 @@ var wrong = 0;
 var correct = 0;
 var unanswered = 0;
 
+
 // Question, Choices, Answers Array
 var questions = [{
                 question : 'Who won the 2016 NBA championship?',
@@ -27,9 +28,45 @@ var questions = [{
 	            "James Naismith"
 	            ],
 	            rightAnswer: 3,
-                rightGif:'http://i.giphy.com/l0HlRP71GpG8FOcMM.gif',
-                wrongGif:'http://i.giphy.com/iWREPosOrwzFm.gif',
-                time: 'http://i.giphy.com/l4hLT6kXPi9js7xFC.gif',
+                rightGif:'http://i.giphy.com/xTiTndWekwvdJrFpcI.gif',	
+                wrongGif:'http://i.giphy.com/Z3TYZ4Jv2sMne.gif',		
+                time: 'http://i.giphy.com/HKIfI1mg2PX6o.gif',		
+	            },{
+	            question : 'Which NBA team plays at Madison Square Garden??',
+	            answers: [
+	            "Chicago Bulls", 
+	            "New Jersey Nets", 
+	            "New York Knicks", 
+	            "Orlando Magic"
+	            ],
+	            rightAnswer: 2,
+                rightGif:'http://i.giphy.com/l0K4ctr53d203FYpq.gif',	
+                wrongGif:'http://i.giphy.com/yeVBYWLaNf2bS.gif',		
+                time: 'http://i.giphy.com/l4hLT6kXPi9js7xFC.gif',		//need to change
+	            },{
+	            question : 'Who founded the game of basketball?',
+	            answers: [
+	            "Dean Smith", 
+	            "John Wooden", 
+	            "Red Auerbach", 
+	            "James Naismith"
+	            ],
+	            rightAnswer: 3,
+                rightGif:'http://i.giphy.com/12ue2nYFnV3m3m.gif',	
+                wrongGif:'http://i.giphy.com/wk8scedJ5erFC.gif',		
+                time: 'http://i.giphy.com/l4hLT6kXPi9js7xFC.gif',		//need to change
+	            },{
+	            question : 'Which NBA team plays at Madison Square Garden??',
+	            answers: [
+	            "Chicago Bulls", 
+	            "New Jersey Nets", 
+	            "New York Knicks", 
+	            "Orlando Magic"
+	            ],
+	            rightAnswer: 2,
+                rightGif:'http://i.giphy.com/l0HlRP71GpG8FOcMM.gif',	//need to change
+                wrongGif:'http://i.giphy.com/FrohR8ByEivHG.gif',		
+                time: 'http://i.giphy.com/l4hLT6kXPi9js7xFC.gif',		//need to change
 	            }];
 
 //Variable that will hold the setInterval when we execute the run function
