@@ -1,5 +1,5 @@
 // Define number of seconds to answer questions
-var number = 10;
+var number = 61;
 var questionNumber = 0;
 var wrong = 0;
 var correct = 0;
@@ -114,7 +114,7 @@ function displayQuestion(){
 				q.css("color", "black");
 				//Adding margin of 15 px on buttons
 				q.css("margin", "15px")
-				q.addClass("btn btn-info");
+				q.addClass("btn btn-warning");
 				//appends q with everything that is set above
 			 	$(".content").append(q);
 			}
@@ -189,7 +189,7 @@ function outOfTime(){
 
 //Timer for next question
 function next(){
-	number = 10;
+	number = 61;
 	//After selecting an answer we set it to the next question number
 	questionNumber++;
 	displayQuestion();
@@ -207,7 +207,7 @@ function gameOver(){
 	$("#start").show();
 	
 	// Redefine number of seconds to answer questions
-	number = 10;
+	number = 61;
 	questionNumber = 0;
 	wrong = 0;
 	correct = 0;
